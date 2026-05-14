@@ -31,13 +31,15 @@ SafeDev turns that into a contained workflow:
 
 ## Quick Start
 
-Install Lima first:
+Install with Homebrew:
 
 ```bash
-brew install lima
+brew install sendaifun/tap/safedev
 ```
 
-Install SafeDev from this checkout:
+Homebrew installs Lima as a dependency.
+
+Or install from this checkout while developing:
 
 ```bash
 cargo install --path .

@@ -28,19 +28,16 @@ cargo publish
 
 ## Homebrew
 
-Homebrew needs a tap repo. The standard SendAI tap would be one of:
+Homebrew publishes through the SendAI tap:
 
 ```text
 git@github.com:sendaifun/homebrew-tap.git
-git@github.com:sendaifun/homebrew-devbox.git
 ```
 
-The user-facing install command depends on that tap name:
+The user-facing install command is:
 
 ```bash
 brew install sendaifun/tap/safedev
-# or
-brew install sendaifun/devbox/safedev
 ```
 
 ## First Homebrew Release
@@ -82,7 +79,17 @@ brew test safedev
 brew audit --strict --online safedev
 ```
 
-6. Push the tap repo.
+6. Push the tap repo:
+
+```bash
+git push origin main
+```
+
+The v0.1.0 formula has already been published with:
+
+```text
+sha256 d0b940744c8413116fb9db539e7139663e371f26030dcb072c05049fe6f6c35b
+```
 
 ## Bottles
 

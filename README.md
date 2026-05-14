@@ -4,10 +4,7 @@ SafeDev gives every repo its own local dev box.
 
 It is for the moment when you want to clone a project, run installs, start a dev server, or hand the repo to Codex, but you do not want that code touching your Mac home directory, SSH keys, browser profile, Docker socket, npm tokens, cloud credentials, or host Codex state.
 
-```text
-Clone unknown code. Open it in SafeDev. Run installs, dev servers, and Codex.
-If the repo is malicious or messy, it burns the sandbox, not your Mac.
-```
+![SafeDev isolation flow](docs/assets/safedev-isolation-flow.png)
 
 SafeDev currently runs on macOS using Lima and Apple Virtualization.framework. Each project gets a separate Linux VM with a writable project workspace and a synthetic `/home/dev`.
 
@@ -73,6 +70,8 @@ VM startup
 Final checks
 Ready
 ```
+
+![SafeDev project detection](docs/assets/safedev-project-detection.png)
 
 SafeDev auto-detects common project types across the repo, including monorepos:
 
@@ -248,21 +247,7 @@ safedev up --mode trusted
 
 ## Security Model
 
-SafeDev protects the host boundary:
-
-```text
-macOS host
-  |
-  | safedev CLI
-  |
-  |-- Lima VM per project
-      |
-      |-- /workspaces/<repo>   writable project workspace
-      |-- /home/dev            synthetic sandbox home
-      |-- Codex CLI
-      |-- package managers
-      |-- dev server
-```
+SafeDev protects the host boundary by putting each project in a separate Lima VM. The VM gets the current repo at `/workspaces/<repo>`, a synthetic `/home/dev`, the detected project toolchains, and Codex when you launch it there.
 
 By default, SafeDev does not mount:
 

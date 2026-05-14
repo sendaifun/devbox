@@ -1,0 +1,12 @@
+{
+  "name": "safedev",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "cargo build",
+    "test": "cargo test && node --test test/*.test.js",
+    "test:e2e": "cargo test && node --test test/e2e.test.js",
+    "test:real-lima": "cargo test && SAFEDEV_REAL_LIMA=1 node --test test/real-lima.test.js"
+  }
+}

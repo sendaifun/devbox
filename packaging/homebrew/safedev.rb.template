@@ -1,0 +1,18 @@
+class Safedev < Formula
+  desc "Run repos and Codex inside isolated per-project dev boxes"
+  homepage "https://github.com/sendaifun/devbox"
+  url "https://github.com/sendaifun/devbox/archive/refs/tags/v__VERSION__.tar.gz"
+  sha256 "__SHA256__"
+  license "MIT"
+
+  depends_on "rust" => :build
+  depends_on "lima"
+
+  def install
+    system "cargo", "install", *std_cargo_args
+  end
+
+  test do
+    assert_match "SafeDev", shell_output("#{bin}/safedev --help")
+  end
+end
